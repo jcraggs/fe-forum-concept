@@ -11,7 +11,7 @@ body {
 
 .App-header {
   background-color: #282c34;
-  min-height: 10vh;
+  min-height: 15vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,10 +29,11 @@ body {
     sans-serif;
   background-color: #646466;
   color: white;
+  font-size: 0.8em;
 }
 
 .App-title {
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 
 .App-main {
@@ -41,14 +42,66 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .App-footer {
   background-color: #282c34;
-  min-height: 10vh;
+  min-height: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.Footerlink {
+  color: #646466;
+  text-decoration: none;
+  font-size: 0.7em;
+}
+
+.homePageContainer {
+  color: black;
+  font-size: 0.5em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: white;
+}
+
+.ArticleQuery {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.AQSelect {
+  display: flex;
+  align-items: center;
+  width: 7.2em;
+  font-size: 1em;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.logInSubtitle {
+  background: #282c34;
+  color: white;
+  text-decoration: none;
+  font-size: 1.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.router {
+  width: 100%;
 }

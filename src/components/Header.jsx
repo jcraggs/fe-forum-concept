@@ -5,8 +5,22 @@ class Header extends React.Component {
   render() {
     return (
       <header className="App-header">
-        <h1 className="App-title">Forum Concept</h1>
-        <button className="logInButton">Log in</button>
+        <h1
+          className="App-title"
+          onClick={() => {
+            window.location.href = "/";
+          }}
+        >
+          Forum Concept
+        </h1>
+        <button
+          className="logInButton"
+          onClick={() => {
+            window.location.href = "/log-in";
+          }}
+        >
+          Log in
+        </button>
       </header>
     );
   }

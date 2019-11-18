@@ -1,13 +1,15 @@
 import React from "react";
 import "./index.css";
 import Header from "./components/Header";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <main className="App-main">Insert app contents</main>
-      <footer className="App-footer">Insert Pagination</footer>
+      <Main />
+      <Footer />
     </div>
   );
 }
