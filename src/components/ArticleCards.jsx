@@ -28,13 +28,20 @@ class ArticleCards extends React.Component {
 
   render() {
     return (
-      <div className="articleCard">
+      <div>
         {console.log(this.state.articles)}
-        <ul>
+        <ul className="articleCards">
           {this.state.articles.map(article => {
             return (
               <li key={article.article_id}>
-                <SingleArticleCard articleTitle={article.title} />
+                <SingleArticleCard
+                  articleTitle={article.title}
+                  author={article.author}
+                  commentCount={article.comment_count}
+                  date={article.created_at}
+                  votes={article.votes}
+                  topic={article.topic}
+                />
               </li>
             );
             // return <li>{article.title}</li>;
