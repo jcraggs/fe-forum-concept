@@ -72,7 +72,12 @@ body {
 }
 
 .loading {
+  display: flex;
+  align-items: center;
+  width: auto;
   height: 80vh;
+  align-content: center;
+  background: white;
 }
 
 .homePageContainer {
@@ -82,7 +87,7 @@ body {
   align-items: center;
   justify-content: center;
   display: flex;
-  background: white;
+  background: #646466;
 }
 
 .topicPageContainer {
@@ -129,7 +134,7 @@ body {
   background: #282c34;
   color: white;
   text-decoration: none;
-  font-size: 1.6em;
+  font-size: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -414,4 +419,77 @@ body {
   margin: 0;
   font-size: 1em;
   padding: 0;
+}
+
+.ArticleAndCommentsContainer > .logInSubtitle {
+  background: #282c34;
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.ArticleAndCommentsContainer > .logInSubtitle:hover {
+  color: #25c3eb;
+  transition: none;
+}
+
+.commentCards {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.IndivCommentCard {
+  display: grid;
+  grid-template-columns: 40% 40% 20%;
+  grid-auto-rows: 30px auto 30px 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 2px;
+  list-style-type: none;
+  background: #cfcfcf;
+  border: 2px solid #282c34;
+  border-radius: 5px;
+  font-size: 1.5em;
+  align-items: center;
+}
+
+.userCommentLink {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #282c34;
+}
+
+.userCommentLink:hover {
+  color: #146579;
+  transition: none;
+}
+
+.userCommentBox {
+  grid-column: span 2;
+  font-size: 0.5em;
+  color: #282c34;
+  padding: 5px;
+}
+
+.commentContent {
+  grid-row: 2 span 2;
+  grid-column: span 3;
+  font-size: 0.5em;
+  color: black;
+  padding: 5px;
+  border: 1px solid #a09f9f;
+  border-radius: 5px;
+  background: #f1efef;
+  text-decoration: none;
+  margin-left: 5px;
+  margin-right: 5px;
 }
