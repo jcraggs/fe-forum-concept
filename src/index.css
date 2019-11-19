@@ -30,10 +30,21 @@ body {
   background-color: #646466;
   color: white;
   font-size: 0.8em;
+  cursor: pointer;
+}
+
+.logInButton:hover {
+  color: #25c3eb;
+  transition: none;
 }
 
 .App-title {
   font-size: 1.4em;
+  cursor: pointer;
+}
+.App-title:hover {
+  color: #25c3eb;
+  transition: none;
 }
 
 .App-main {
@@ -60,7 +71,31 @@ body {
   font-size: 0.7em;
 }
 
+.loading {
+  height: 80vh;
+}
+
 .homePageContainer {
+  color: black;
+  font-size: 0.5em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: white;
+}
+
+.topicPageContainer {
+  color: black;
+  font-size: 0.5em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background: white;
+}
+
+.articlePageContainer {
   color: black;
   font-size: 0.5em;
   flex-direction: column;
@@ -77,7 +112,9 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  background-color: #434344;
+  width: 100%;
 }
 .AQSelect {
   display: flex;
@@ -102,8 +139,14 @@ body {
   padding-bottom: 5px;
 }
 
+.logInSubtitle:hover {
+  color: #25c3eb;
+  transition: none;
+}
+
 .router {
   width: 100%;
+  background-color: #434344;
 }
 
 .articleCards {
@@ -112,12 +155,13 @@ body {
   padding-left: 0;
   display: flex;
   flex-direction: column;
+  background-color: #434344;
 }
 
 .IndivArticleCard {
   display: grid;
-  grid-template-columns: 70% 30%;
-  grid-auto-rows: 30px 30px auto 30px;
+  grid-template-columns: 40% 40% 20%;
+  grid-auto-rows: 30px auto 30px 25px;
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 5px;
@@ -131,48 +175,243 @@ body {
   align-items: center;
 }
 
-p.topicBox {
+.topicBox {
+  grid-row: 4;
+  grid-column: 1;
   margin: 0;
   padding: 5px;
   text-transform: capitalize;
 }
 
-p.commentBox {
+.topicLink {
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+.topicLink:hover {
+  color: #146579;
+  transition: none;
+}
+
+.commentBox {
   padding-left: 5px;
   padding-right: 5px;
+  cursor: pointer;
+}
+
+.commentBox:hover {
+  text-shadow: 0px 0px 20px #0a358a;
+  transition: none;
 }
 
 .downvoteButton {
-  margin: 5px;
+  grid-column: 3;
+  grid-row: 4;
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.downvoteButton:hover {
+  text-shadow: 0px 0px 20px #0a358a;
+  transition: none;
 }
 
 .upvoteButton {
-  margin: 5px;
-}
-
-p.userBox {
+  grid-column: 3;
+  grid-row: 1;
   margin: 0;
   padding: 5px;
+  text-align: center;
+  cursor: pointer;
 }
 
-p.dateBox {
+.upvoteButton:hover {
+  text-shadow: 0px 0px 20px #0a358a;
+  transition: none;
+}
+
+.userBox {
+  grid-column: 1/1;
   margin: 0;
   padding: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  text-decoration: underline;
+  color: #282c34;
 }
 
-p.titleBox {
+.userBox:hover {
+  color: #146579;
+  transition: none;
+}
+
+.dateBox {
+  grid-row: 1;
+  grid-column: 2;
   margin: 0;
   padding: 5px;
+  font-size: 0.8em;
+  color: #282c34;
+  text-align: center;
 }
 
-p.voteBox {
+.titleBox {
+  grid-row: span 2;
+  grid-column: span 2;
+  margin: 0;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+  padding: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em;
+  border: 1px solid #a09f9f;
+  border-radius: 5px;
+  background: #f1efef;
+  text-decoration: none;
+  color: black;
+}
+
+.titleBox:hover {
+  color: #146579;
+  transition: none;
+}
+
+.voteBox {
+  grid-column: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
   margin: 0;
   padding: 5px;
   text-align: center;
 }
 
-p.commentBox {
+.commentBox {
+  grid-row: 4;
+  grid-column: 2;
+  cursor: pointer;
   margin: 0;
   padding: 5px;
   text-align: center;
+  text-decoration: none;
+  color: black;
+  font-size: 0.9em;
+}
+
+.topicBannerTitle {
+  text-transform: capitalize;
+  width: 100%;
+  margin: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #434344;
+  color: white;
+}
+
+.fullArticle {
+  display: grid;
+  grid-template-columns: 40% 35% 25%;
+  grid-auto-rows: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 2px;
+  list-style-type: none;
+  background: #cfcfcf;
+  border: 2px solid #282c34;
+  border-radius: 5px;
+  font-size: 1em;
+  align-items: center;
+  color: black;
+}
+
+.aTitle {
+  grid-column: span 3;
+  grid-row: 1;
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+.aAuthor {
+  grid-column: span 2;
+  grid-row: 2;
+  font-size: 1em;
+  margin: 0;
+  padding-left: 10px;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #282c34;
+}
+
+.aAuthor:hover {
+  color: #146579;
+  transition: none;
+}
+
+.aDate {
+  grid-column: span 2;
+  grid-row: 3;
+  font-size: 0.8em;
+  margin: 0;
+  padding-left: 10px;
+}
+
+.aTopic {
+  grid-column: span 2;
+  grid-row: 4;
+  text-transform: capitalize;
+  font-size: 0.8em;
+  margin: 0;
+  padding-left: 10px;
+}
+
+.aVotes {
+  grid-column: 3;
+  grid-row: 3;
+  text-align: center;
+  padding-top: 2.5px;
+  padding-bottom: 2.5px;
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.aContent {
+  grid-column: span 3;
+  grid-row: 5;
+  font-size: 0.9em;
+  padding: 5px;
+  border: 1px solid #a09f9f;
+  border-radius: 5px;
+  background: #f1efef;
+  text-decoration: none;
+  color: black;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.fullArticle > .upvoteButton {
+  grid-column: 3;
+  grid-row: 2;
+  margin: 0;
+  font-size: 1em;
+  padding: 0;
+}
+
+.fullArticle > .downvoteButton {
+  grid-column: 3;
+  grid-row: 4;
+  margin: 0;
+  font-size: 1em;
+  padding: 0;
 }

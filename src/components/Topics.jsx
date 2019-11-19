@@ -3,25 +3,39 @@ import "../index.css";
 import SingleArticleCard from "../components/SingleArticleCard";
 import Loading from "../components/Loading";
 import * as api from "../api";
+import LogInSubTitle from "../components/LogInSubTitle";
+import TopicBanner from "../components/TopicBanner";
 
-class ArticleCards extends React.Component {
+class Topics extends React.Component {
   state = {
     articles: [],
-    isLoading: true
+    isLoading: true,
+    topicPage: ""
   };
 
   componentDidMount() {
-    api.getAllArticles().then(data => {
-      this.setState({ articles: data, isLoading: false });
+    api.getAllArticles(this.props.topic).then(data => {
+      this.setState({
+        articles: data,
+        isLoading: false,
+        topicPage: this.props.topic
+      });
     });
   }
 
   render() {
     if (this.state.isLoading) {
-      return <Loading />;
+      return (
+        <div className="topicPageContainer">
+          <Loading />
+        </div>
+      );
     }
     return (
-      <div>
+      <div className="topicPageContainer">
+        <h1 className="topicBannerTitle">Topic: {this.state.topicPage}</h1>
+        <TopicBanner />
+        <LogInSubTitle />
         <ul className="articleCards">
           {this.state.articles.map(article => {
             return (
@@ -43,4 +57,5 @@ class ArticleCards extends React.Component {
     );
   }
 }
-export default ArticleCards;
+
+export default Topics;

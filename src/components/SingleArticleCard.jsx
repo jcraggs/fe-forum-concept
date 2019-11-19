@@ -1,35 +1,46 @@
 import React from "react";
 import "../index.css";
+import { Link } from "@reach/router";
+import UpvoteArticle from "../components/UpvoteArticle";
+import DownvoteArticle from "../components/DownvoteArticle";
 
 class SingleArticleCard extends React.Component {
   render() {
-    console.log(this.props);
-
     return (
       <div className="IndivArticleCard">
-        <p className="userBox">{this.props.author}</p>
-        <button className="upvoteButton">
-          <span role="img" aria-label="upvote">
-            ⬆️
-          </span>
-        </button>
-        <p className="dateBox">{this.props.date}</p>
+        <Link className="userBox" to={`/user/${this.props.author}`}>
+          {this.props.author}
+        </Link>
+
+        <UpvoteArticle />
+
+        <p className="dateBox">
+          Posted: {new Date(this.props.date).toLocaleDateString()}
+        </p>
+
         <p className="voteBox">Votes: {this.props.votes}</p>
 
-        <p className="titleBox">{this.props.articleTitle} </p>
-        <button className="downvoteButton">
-          <span role="img" aria-label="downvote">
-            ⬇️
-          </span>
-        </button>
+        <Link className="titleBox" to={`/articles/${this.props.article_id}`}>
+          {this.props.articleTitle}
+        </Link>
 
-        <p className="topicBox">From: {this.props.topic}</p>
-        <p className="commentBox">
-          <span role="img" aria-label="comments">
-            💬
-          </span>{" "}
-          {this.props.commentCount}{" "}
+        <DownvoteArticle />
+
+        <p className="topicBox">
+          From:{" "}
+          <Link
+            className="topicLink"
+            to={`/articles/topics/${this.props.topic}`}
+          >
+            {this.props.topic}
+          </Link>{" "}
         </p>
+
+        <Link className="commentBox" to={`/articles/${this.props.article_id}`}>
+          <span role="img" aria-label="comments">
+            💬 {this.props.commentCount} comments
+          </span>
+        </Link>
       </div>
     );
   }

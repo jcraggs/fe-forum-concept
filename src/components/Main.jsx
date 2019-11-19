@@ -6,6 +6,7 @@ import Article from "../components/Article";
 import User from "../components/User";
 import LogIn from "../components/LogIn";
 import ErrorPage from "../components/ErrorPage";
+import Topics from "../components/Topics";
 
 class Main extends React.Component {
   render() {
@@ -14,6 +15,7 @@ class Main extends React.Component {
         <Router className="router">
           <Home path="/" />
           <Article path="/articles/:article_id" />
+          <Topics path="/articles/topics/:topic" />
           <User path="/user/:user_id" />
           <LogIn path="/log-in" />
           <ErrorPage path="/*" />
