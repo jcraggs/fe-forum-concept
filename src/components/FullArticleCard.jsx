@@ -9,12 +9,9 @@ import * as api from "../api";
 class FullArticleCard extends React.Component {
   state = {
     isLoading: true,
-    title: "",
-    author: "",
-    date: "",
-    content: "",
-    votes: "",
-    topic: ""
+    changeval: 0,
+    upLimit: 1,
+    downLimit: -1
   };
 
   componentDidMount() {
@@ -30,6 +27,25 @@ class FullArticleCard extends React.Component {
       });
     });
   }
+
+  updateArticleVote = changeVoteVal => {
+    if (changeVoteVal === 1) {
+      if (this.state.changeval !== this.state.upLimit) {
+        this.setState({
+          changeval: this.state.changeval + 1
+        });
+        api.patchArticleVote(this.props.urlInfo.article_id, changeVoteVal);
+      }
+    }
+    if (changeVoteVal === -1) {
+      if (this.state.changeval !== this.state.downLimit) {
+        this.setState({
+          changeval: this.state.changeval - 1
+        });
+        api.patchArticleVote(this.props.urlInfo.article_id, changeVoteVal);
+      }
+    }
+  };
 
   render() {
     if (this.state.isLoading) {
@@ -59,9 +75,29 @@ class FullArticleCard extends React.Component {
             {this.state.topic}
           </Link>{" "}
         </p>
-        <UpvoteArticle />
-        <p className="aVotes">Votes: {this.state.votes}</p>
-        <DownvoteArticle />
+
+        <button
+          className="upvoteButton"
+          onClick={() => {
+            this.updateArticleVote(1);
+          }}
+        >
+          <UpvoteArticle />
+        </button>
+
+        <p className="aVotes">
+          Votes: {this.state.votes + this.state.changeval}
+        </p>
+
+        <button
+          className="downvoteButton"
+          onClick={() => {
+            this.updateArticleVote(-1);
+          }}
+        >
+          <DownvoteArticle />
+        </button>
+
         <p className="aContent">{this.state.content}</p>
       </div>
     );

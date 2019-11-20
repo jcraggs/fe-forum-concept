@@ -4,23 +4,44 @@ import SingleArticleCard from "../components/SingleArticleCard";
 import Loading from "../components/Loading";
 import * as api from "../api";
 import LogInSubTitle from "../components/LogInSubTitle";
-import TopicBanner from "../components/TopicBanner";
+import TopicQuery from "../components/TopicQuery";
 
 class Topics extends React.Component {
   state = {
     articles: [],
     isLoading: true,
-    topicPage: ""
+    sortBy: undefined,
+    orderBy: undefined
   };
 
   componentDidMount() {
     api.getAllArticles(this.props.topic).then(data => {
       this.setState({
         articles: data,
-        isLoading: false,
-        topicPage: this.props.topic
+        isLoading: false
       });
     });
+  }
+
+  updateSortBy = param => {
+    this.setState({ sortBy: param });
+  };
+
+  updateOrder = order => {
+    this.setState({ orderBy: order });
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.sortBy !== this.state.sortBy ||
+      prevState.orderBy !== this.state.orderBy
+    ) {
+      api
+        .getAllArticles(this.props.topic, this.state.sortBy, this.state.orderBy)
+        .then(data => {
+          this.setState({ articles: data, isLoading: false });
+        });
+    }
   }
 
   render() {
@@ -33,8 +54,11 @@ class Topics extends React.Component {
     }
     return (
       <div className="topicPageContainer">
-        <h1 className="topicBannerTitle">Topic: {this.state.topicPage}</h1>
-        <TopicBanner />
+        <h1 className="topicBannerTitle">Topic: {this.props.topic}</h1>
+        <TopicQuery
+          updateSortBy={this.updateSortBy}
+          updateOrder={this.updateOrder}
+        />
         <LogInSubTitle />
         <ul className="articleCards">
           {this.state.articles.map(article => {

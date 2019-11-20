@@ -1,21 +1,10 @@
 import React from "react";
 import "../index.css";
 
-class ArticleQuery extends React.Component {
+class TopicQuery extends React.Component {
   render() {
     return (
       <div className="ArticleQuery">
-        <select
-          className="AQSelect"
-          onChange={event => {
-            this.props.updateSelectedTopic(event.target.value);
-          }}
-        >
-          <option value="">- Filter Topic -</option>
-          <option value="coding">Coding</option>
-          <option value="cooking"> Cooking</option>
-          <option value="football">Football</option>
-        </select>
         <select
           className="AQSelect"
           onChange={event => {
@@ -41,4 +30,4 @@ class ArticleQuery extends React.Component {
     );
   }
 }
-export default ArticleQuery;
+export default TopicQuery;

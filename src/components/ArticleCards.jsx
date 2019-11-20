@@ -16,6 +16,20 @@ class ArticleCards extends React.Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      api
+        .getAllArticles(
+          this.props.topicParam,
+          this.props.sortByParam,
+          this.props.orderByParam
+        )
+        .then(data => {
+          this.setState({ articles: data, isLoading: false });
+        });
+    }
+  }
+
   render() {
     if (this.state.isLoading) {
       return <Loading />;
