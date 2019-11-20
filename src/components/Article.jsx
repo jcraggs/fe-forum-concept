@@ -3,16 +3,14 @@ import "../index.css";
 import FullArticleCard from "../components/FullArticleCard";
 import LogInSubTitle from "../components/LogInSubTitle";
 import CommentCards from "../components/CommentCards";
-import InputComment from "../components/InputComment";
 
 class Article extends React.Component {
   render() {
     return (
       <div className="ArticleAndCommentsContainer">
         <FullArticleCard urlInfo={this.props} />
-        <LogInSubTitle />
-        <InputComment />
-        <CommentCards urlInfo={this.props} />
+        {!this.props.user && <LogInSubTitle />}
+        <CommentCards urlInfo={this.props} user={this.props.user} />
       </div>
     );
   }

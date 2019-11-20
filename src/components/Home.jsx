@@ -1,7 +1,6 @@
 import React from "react";
 import "../index.css";
 import ArticleQuery from "../components/ArticleQuery";
-import LogInSubTitle from "../components/LogInSubTitle";
 import ArticleCards from "../components/ArticleCards";
 
 class Home extends React.Component {
@@ -31,7 +30,6 @@ class Home extends React.Component {
           updateSortBy={this.updateSortBy}
           updateOrder={this.updateOrder}
         />
-        <LogInSubTitle />
         <ArticleCards
           topicParam={this.state.selectedTopic}
           sortByParam={this.state.sortBy}

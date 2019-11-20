@@ -13,14 +13,26 @@ class Header extends React.Component {
         >
           Forum Concept
         </h1>
-        <button
-          className="logInButton"
-          onClick={() => {
-            window.location.href = "/log-in";
-          }}
-        >
-          Log in
-        </button>
+        {!this.props.user && (
+          <button
+            className="logInButton"
+            onClick={() => {
+              this.props.logIn("tickle122");
+            }}
+          >
+            Log in
+          </button>
+        )}
+        {this.props.user && (
+          <button
+            className="logInButton"
+            onClick={() => {
+              this.props.logOut();
+            }}
+          >
+            Log out
+          </button>
+        )}
       </header>
     );
   }

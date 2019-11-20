@@ -31,6 +31,12 @@ class SingleCommentCard extends React.Component {
     }
   };
 
+  componentDidMount() {
+    console.log("updated");
+    console.log(this.props.user);
+    console.log(this.props.author);
+  }
+
   render() {
     return (
       <div className="IndivCommentCard">
@@ -62,6 +68,19 @@ class SingleCommentCard extends React.Component {
             <DownvoteComment />
           </button>
         </div>
+        {this.props.user === this.props.author && (
+          <button
+            className="deleteCommentButton"
+            onClick={() => {
+              if (
+                window.confirm("Are you sure you want to delete this comment?")
+              )
+                this.props.deleteComment(this.props.comment_id);
+            }}
+          >
+            Delete Comment
+          </button>
+        )}
       </div>
     );
   }

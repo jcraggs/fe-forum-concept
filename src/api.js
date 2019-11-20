@@ -46,3 +46,21 @@ export const patchArticleVote = async (article_id, voteVal) => {
   );
   return data;
 };
+
+export const postComment = async (article_id, username, comment) => {
+  const { data } = await axios.post(
+    `https://forum-concept.herokuapp.com/api/articles/${article_id}/comments`,
+    {
+      username: username,
+      body: comment
+    }
+  );
+  return data.comment;
+};
+
+export const deleteCommentCard = async comment_id => {
+  const { data } = await axios.delete(
+    `https://forum-concept.herokuapp.com/api/comments/${comment_id}`
+  );
+  return data;
+};

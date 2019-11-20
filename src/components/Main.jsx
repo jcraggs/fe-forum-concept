@@ -14,7 +14,7 @@ class Main extends React.Component {
       <main className="App-main">
         <Router className="router">
           <Home path="/" />
-          <Article path="/articles/:article_id" />
+          <Article path="/articles/:article_id" user={this.props.user} />
           <Topics path="/articles/topics/:topic" />
           <User path="/user/:user_id" />
           <LogIn path="/log-in" />

@@ -3,7 +3,6 @@ import "../index.css";
 import SingleArticleCard from "../components/SingleArticleCard";
 import Loading from "../components/Loading";
 import * as api from "../api";
-import LogInSubTitle from "../components/LogInSubTitle";
 import TopicQuery from "../components/TopicQuery";
 
 class Topics extends React.Component {
@@ -59,7 +58,6 @@ class Topics extends React.Component {
           updateSortBy={this.updateSortBy}
           updateOrder={this.updateOrder}
         />
-        <LogInSubTitle />
         <ul className="articleCards">
           {this.state.articles.map(article => {
             return (
