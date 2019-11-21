@@ -6,7 +6,7 @@ class CommentQuery extends React.Component {
     return (
       <div className="commentQuery">
         <select
-          className="CommentSelect"
+          className="commentSelect"
           onChange={event => {
             this.props.updateSortBy(event.target.value);
           }}
@@ -16,7 +16,7 @@ class CommentQuery extends React.Component {
           <option value="votes">Number of votes</option>
         </select>
         <select
-          className="CommentSelect"
+          className="commentSelect"
           onChange={event => {
             this.props.updateOrder(event.target.value);
           }}

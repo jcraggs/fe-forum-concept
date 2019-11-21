@@ -164,8 +164,27 @@ body {
 .AQSelect {
   display: flex;
   align-items: center;
-  width: 7.2em;
+  width: 8em;
   font-size: 1em;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.commentQuery {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1c1e24;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 1.5em;
+}
+
+.commentSelect {
+  display: flex;
+  align-items: center;
+  width: 8em;
+  font-size: 0.5em;
   margin-right: 5px;
   margin-left: 5px;
 }
