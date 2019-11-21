@@ -13,15 +13,17 @@ class Header extends React.Component {
         >
           Forum Concept
         </h1>
-        {!this.props.user && (
+        {!window.location.href.match(/log-in/g) && !this.props.user ? (
           <button
             className="logInButton"
             onClick={() => {
-              this.props.logIn("tickle122");
+              window.location.href = "/log-in";
             }}
           >
             Log in
           </button>
+        ) : (
+          ""
         )}
         {this.props.user && (
           <button
@@ -32,6 +34,14 @@ class Header extends React.Component {
           >
             Log out
           </button>
+        )}
+        {this.props.user && (
+          <p className="welcomeMessage">
+            Hello,{" "}
+            <a className="userLinkHeader" href={`/user/${this.props.user}`}>
+              {this.props.user}
+            </a>
+          </p>
         )}
       </header>
     );

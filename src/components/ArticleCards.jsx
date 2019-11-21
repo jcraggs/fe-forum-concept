@@ -11,9 +11,16 @@ class ArticleCards extends React.Component {
   };
 
   componentDidMount() {
-    api.getAllArticles().then(data => {
-      this.setState({ articles: data, isLoading: false });
-    });
+    api
+      .getAllArticles(
+        this.props.topicParam,
+        this.props.sortByParam,
+        this.props.orderByParam,
+        this.props.authorParam
+      )
+      .then(data => {
+        this.setState({ articles: data, isLoading: false });
+      });
   }
 
   componentDidUpdate(prevProps) {
@@ -22,7 +29,8 @@ class ArticleCards extends React.Component {
         .getAllArticles(
           this.props.topicParam,
           this.props.sortByParam,
-          this.props.orderByParam
+          this.props.orderByParam,
+          this.props.authorParam
         )
         .then(data => {
           this.setState({ articles: data, isLoading: false });

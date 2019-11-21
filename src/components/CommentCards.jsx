@@ -10,10 +10,26 @@ class CommentCards extends React.Component {
     isLoading: true
   };
 
+  fetchCommentData = () => {
+    api
+      .getAllComments(
+        this.props.urlInfo.article_id,
+        this.props.sortByParam,
+        this.props.orderParam
+      )
+      .then(data => {
+        this.setState({ comments: data, isLoading: false });
+      });
+  };
+
   componentDidMount() {
-    api.getAllComments(this.props.urlInfo.article_id).then(data => {
-      this.setState({ comments: data, isLoading: false });
-    });
+    this.fetchCommentData();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.fetchCommentData();
+    }
   }
 
   updateCommentCards = newComment => {

@@ -31,12 +31,6 @@ class SingleCommentCard extends React.Component {
     }
   };
 
-  componentDidMount() {
-    console.log("updated");
-    console.log(this.props.user);
-    console.log(this.props.author);
-  }
-
   render() {
     return (
       <div className="IndivCommentCard">

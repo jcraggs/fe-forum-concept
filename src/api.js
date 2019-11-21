@@ -1,10 +1,20 @@
 import axios from "axios";
 
-export const getAllArticles = async (topicParam, sortParam, orderParam) => {
+export const getAllArticles = async (
+  topicParam,
+  sortParam,
+  orderParam,
+  authorParam
+) => {
   const { data } = await axios.get(
     "https://forum-concept.herokuapp.com/api/articles",
     {
-      params: { topic: topicParam, sort_by: sortParam, order: orderParam }
+      params: {
+        topic: topicParam,
+        sort_by: sortParam,
+        order: orderParam,
+        author: authorParam
+      }
     }
   );
 
@@ -19,9 +29,15 @@ export const getArticleInfo = async article_id => {
   return data.article;
 };
 
-export const getAllComments = async article_id => {
+export const getAllComments = async (article_id, sortParam, orderParam) => {
   const { data } = await axios.get(
-    `https://forum-concept.herokuapp.com/api/articles/${article_id}/comments`
+    `https://forum-concept.herokuapp.com/api/articles/${article_id}/comments`,
+    {
+      params: {
+        sort_by: sortParam,
+        order: orderParam
+      }
+    }
   );
 
   return data.comments;
@@ -61,6 +77,13 @@ export const postComment = async (article_id, username, comment) => {
 export const deleteCommentCard = async comment_id => {
   const { data } = await axios.delete(
     `https://forum-concept.herokuapp.com/api/comments/${comment_id}`
+  );
+  return data;
+};
+
+export const getUserData = async user_id => {
+  const { data } = await axios.get(
+    `https://forum-concept.herokuapp.com/api/users/${user_id}`
   );
   return data;
 };

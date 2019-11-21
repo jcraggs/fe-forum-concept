@@ -28,12 +28,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header
-          user={this.state.user}
-          logOut={this.logUserOut}
-          logIn={this.logUserIn}
-        />
-        <Main user={this.state.user} />
+        <Header user={this.state.user} logOut={this.logUserOut} />
+        <Main user={this.state.user} logIn={this.logUserIn} />
         <Footer />
       </div>
     );

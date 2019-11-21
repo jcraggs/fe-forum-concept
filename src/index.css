@@ -1,3 +1,4 @@
+/* General */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -9,11 +10,29 @@ body {
   margin: 0;
 }
 
+.loading {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 80vh;
+  align-content: center;
+  background: white;
+  justify-content: center;
+}
+
+.router {
+  width: 100%;
+  background-color: #434344;
+}
+
+/* Header */
+
 .App-header {
   background-color: #282c34;
   min-height: 15vh;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 1fr 1fr;
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
@@ -31,6 +50,9 @@ body {
   color: white;
   font-size: 0.8em;
   cursor: pointer;
+  grid-row: 1;
+  grid-column: 2;
+  margin-left: auto;
 }
 
 .logInButton:hover {
@@ -39,6 +61,7 @@ body {
 }
 
 .App-title {
+  grid-row: span 2;
   font-size: 1.4em;
   cursor: pointer;
 }
@@ -46,6 +69,26 @@ body {
   color: #25c3eb;
   transition: none;
 }
+
+.welcomeMessage {
+  grid-row: 2;
+  grid-column: 2;
+  font-size: 0.6em;
+  margin: 0;
+  margin-left: auto;
+  display: flex;
+}
+.userLinkHeader {
+  margin-left: 2px;
+  color: white;
+  padding-right: 2px;
+}
+.userLinkHeader:hover {
+  color: #25c3eb;
+  transition: none;
+}
+
+/* Main */
 
 .App-main {
   background-color: #434344;
@@ -55,6 +98,8 @@ body {
   align-items: center;
   justify-content: flex-start;
 }
+
+/* Footer */
 
 .App-footer {
   background-color: #282c34;
@@ -71,14 +116,7 @@ body {
   font-size: 0.7em;
 }
 
-.loading {
-  display: flex;
-  align-items: center;
-  width: auto;
-  height: 80vh;
-  align-content: center;
-  background: white;
-}
+/* Page containers */
 
 .homePageContainer {
   color: black;
@@ -87,7 +125,7 @@ body {
   align-items: center;
   justify-content: center;
   display: flex;
-  background: #646466;
+  background: #434344;
 }
 
 .topicPageContainer {
@@ -110,6 +148,8 @@ body {
   background: #646466;
 }
 
+/* Query boxes */
+
 .ArticleQuery {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -130,6 +170,8 @@ body {
   margin-left: 5px;
 }
 
+/* Log in to comment message */
+
 .logInSubtitle {
   background: #282c34;
   color: white;
@@ -149,10 +191,7 @@ body {
   transition: none;
 }
 
-.router {
-  width: 100%;
-  background-color: #434344;
-}
+/* Articles/Home page */
 
 .articleCards {
   list-style: none;
@@ -180,6 +219,8 @@ body {
   align-items: center;
 }
 
+/* Topic page */
+
 .topicBox {
   grid-row: 4;
   grid-column: 1;
@@ -200,6 +241,8 @@ body {
   transition: none;
 }
 
+/* Comments */
+
 .commentBox {
   padding-left: 5px;
   padding-right: 5px;
@@ -210,6 +253,8 @@ body {
   text-shadow: 0px 0px 20px #0a358a;
   transition: none;
 }
+
+/* Up/Down votes */
 
 .downvoteButton {
   grid-column: 3;
@@ -246,6 +291,8 @@ body {
   text-shadow: 0px 0px 20px #0a358a;
   transition: none;
 }
+
+/* Article card elements */
 
 .userBox {
   grid-column: 1/1;
@@ -327,6 +374,8 @@ body {
   background-color: #434344;
   color: white;
 }
+
+/* Full Article elements */
 
 .fullArticle {
   display: grid;
@@ -556,4 +605,47 @@ body {
 
 .IndivCommentCard > .commentVotesContainer > .downvoteButton {
   font-size: 0.6em;
+}
+
+/* Log In Page */
+
+.logInContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logInTitleMsg {
+  font-size: large;
+  text-align: center;
+}
+
+.userSelect {
+  margin-right: 5px;
+}
+
+.submitLogin {
+  margin-left: 5px;
+}
+
+/* User Page */
+.userCardContainer {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.userTitle {
+  font-size: 1.5em;
+  color: white;
+}
+
+.userImg {
+  width: 40%;
+}
+
+.userArticleTitle {
+  font-size: 1.2em;
+  color: white;
 }
