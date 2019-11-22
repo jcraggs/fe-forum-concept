@@ -8,21 +8,35 @@ class UserCard extends React.Component {
     isLoading: true,
     user: undefined,
     avatar: undefined,
-    irl_name: undefined
+    irl_name: undefined,
+    error: null
   };
 
   componentDidMount() {
-    api.getUserData(this.props.user_id).then(data => {
-      this.setState({
-        user: data.user.username,
-        avatar: data.user.avatar_url,
-        irl_name: data.user.name,
-        isLoading: false
+    api
+      .getUserData(this.props.user_id)
+      .then(data => {
+        this.setState({
+          user: data.user.username,
+          avatar: data.user.avatar_url,
+          irl_name: data.user.name,
+          isLoading: false
+        });
+      })
+      .catch(err => {
+        this.triggerError({
+          msg: err.response.data.msg,
+          status: err.response.status
+        });
       });
-    });
   }
 
+  triggerError = err => {
+    this.setState({ error: err });
+  };
+
   render() {
+    if (this.state.error !== null) return null;
     if (this.state.isLoading) {
       return <Loading />;
     }

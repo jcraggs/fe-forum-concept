@@ -3,28 +3,36 @@ import "../index.css";
 import FullArticleCard from "../components/FullArticleCard";
 import LogInSubTitle from "../components/LogInSubTitle";
 import CommentCards from "../components/CommentCards";
-import CommentQuery from "./CommentQuery";
+import CommentQuery from "../components/CommentQuery";
+import ErrorMsg from "../components/ErrorMsg";
 
 class Article extends React.Component {
   state = {
     sortBy: undefined,
-    orderBy: undefined
+    orderBy: undefined,
+    error: null
   };
 
   updateSortBy = param => {
     this.setState({ sortBy: param });
-    console.log("triggered sortby");
   };
 
   updateOrder = order => {
     this.setState({ orderBy: order });
-    console.log("triggered order");
+  };
+
+  triggerError = err => {
+    this.setState({ error: err });
   };
 
   render() {
+    if (this.state.error !== null) return <ErrorMsg error={this.state.error} />;
     return (
       <div className="ArticleAndCommentsContainer">
-        <FullArticleCard urlInfo={this.props} />
+        <FullArticleCard
+          urlInfo={this.props}
+          triggerError={this.triggerError}
+        />
         {!this.props.user && <LogInSubTitle />}
         <CommentQuery
           updateSortBy={this.updateSortBy}
@@ -35,6 +43,7 @@ class Article extends React.Component {
           user={this.props.user}
           sortByParam={this.state.sortBy}
           orderParam={this.state.orderBy}
+          triggerError={this.triggerError}
         />
       </div>
     );

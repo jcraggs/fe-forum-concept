@@ -3,11 +3,13 @@ import "../index.css";
 import * as api from "../api";
 import SingleCommentCard from "../components/SingleCommentCard";
 import InputComment from "../components/InputComment";
+import ErrorMsg from "../components/ErrorMsg";
 
 class CommentCards extends React.Component {
   state = {
     comments: [],
-    isLoading: true
+    isLoading: true,
+    error: null
   };
 
   fetchCommentData = () => {
@@ -19,6 +21,9 @@ class CommentCards extends React.Component {
       )
       .then(data => {
         this.setState({ comments: data, isLoading: false });
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 
@@ -52,6 +57,7 @@ class CommentCards extends React.Component {
   };
 
   render() {
+    if (this.state.error !== null) return <ErrorMsg error={this.state.error} />;
     return (
       <div>
         {this.props.user && (

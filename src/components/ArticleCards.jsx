@@ -3,11 +3,13 @@ import "../index.css";
 import SingleArticleCard from "../components/SingleArticleCard";
 import Loading from "../components/Loading";
 import * as api from "../api";
+import ErrorMsg from "../components/ErrorMsg";
 
 class ArticleCards extends React.Component {
   state = {
     articles: [],
-    isLoading: true
+    isLoading: true,
+    error: null
   };
 
   componentDidMount() {
@@ -20,6 +22,12 @@ class ArticleCards extends React.Component {
       )
       .then(data => {
         this.setState({ articles: data, isLoading: false });
+      })
+      .catch(err => {
+        this.triggerError({
+          msg: err.response.data.msg,
+          status: err.response.status
+        });
       });
   }
 
@@ -34,11 +42,22 @@ class ArticleCards extends React.Component {
         )
         .then(data => {
           this.setState({ articles: data, isLoading: false });
+        })
+        .catch(err => {
+          this.triggerError({
+            msg: err.response.data.msg,
+            status: err.response.status
+          });
         });
     }
   }
 
+  triggerError = err => {
+    this.setState({ error: err });
+  };
+
   render() {
+    if (this.state.error !== null) return <ErrorMsg error={this.state.error} />;
     if (this.state.isLoading) {
       return <Loading />;
     }

@@ -15,17 +15,25 @@ class FullArticleCard extends React.Component {
   };
 
   componentDidMount() {
-    api.getArticleInfo(this.props.urlInfo.article_id).then(data => {
-      this.setState({
-        title: data.title,
-        author: data.author,
-        date: data.created_at,
-        content: data.body,
-        votes: data.votes,
-        topic: data.topic,
-        isLoading: false
+    api
+      .getArticleInfo(this.props.urlInfo.article_id)
+      .then(data => {
+        this.setState({
+          title: data.title,
+          author: data.author,
+          date: data.created_at,
+          content: data.body,
+          votes: data.votes,
+          topic: data.topic,
+          isLoading: false
+        });
+      })
+      .catch(err => {
+        this.props.triggerError({
+          msg: err.response.data.msg,
+          status: err.response.status
+        });
       });
-    });
   }
 
   updateArticleVote = changeVoteVal => {
@@ -51,7 +59,7 @@ class FullArticleCard extends React.Component {
     if (this.state.isLoading) {
       return (
         <div className="articlePageContainer">
-          <Loading />;
+          <Loading />
         </div>
       );
     }

@@ -4,23 +4,37 @@ import SingleArticleCard from "../components/SingleArticleCard";
 import Loading from "../components/Loading";
 import * as api from "../api";
 import TopicQuery from "../components/TopicQuery";
+import ErrorMsg from "../components/ErrorMsg";
 
 class Topics extends React.Component {
   state = {
     articles: [],
     isLoading: true,
     sortBy: undefined,
-    orderBy: undefined
+    orderBy: undefined,
+    error: null
   };
 
   componentDidMount() {
-    api.getAllArticles(this.props.topic).then(data => {
-      this.setState({
-        articles: data,
-        isLoading: false
+    api
+      .getAllArticles(this.props.topic)
+      .then(data => {
+        this.setState({
+          articles: data,
+          isLoading: false
+        });
+      })
+      .catch(err => {
+        this.triggerError({
+          msg: err.response.data.msg,
+          status: err.response.status
+        });
       });
-    });
   }
+
+  triggerError = err => {
+    this.setState({ error: err });
+  };
 
   updateSortBy = param => {
     this.setState({ sortBy: param });
@@ -39,11 +53,18 @@ class Topics extends React.Component {
         .getAllArticles(this.props.topic, this.state.sortBy, this.state.orderBy)
         .then(data => {
           this.setState({ articles: data, isLoading: false });
+        })
+        .catch(err => {
+          this.triggerError({
+            msg: err.response.data.msg,
+            status: err.response.status
+          });
         });
     }
   }
 
   render() {
+    if (this.state.error !== null) return <ErrorMsg error={this.state.error} />;
     if (this.state.isLoading) {
       return (
         <div className="topicPageContainer">
