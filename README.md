@@ -34,9 +34,9 @@ The website is hosted here: https://forum-concept.netlify.com
 ```raw
 .
 ├── public
-│   ├── _redirects ->
-│   ├── favicon.ico -> display icon in the browser
-│   └── index.html ->
+│   ├── _redirects                ->    tells netifly to serve the index.html page
+│   ├── favicon.ico               ->    display icon in the browser
+│   └── index.html                ->    html file for the react app (all the application components are loaded into this)
 │
 ├── src
 │   ├── components
@@ -67,17 +67,16 @@ The website is hosted here: https://forum-concept.netlify.com
 │   │   ├── User.jsx              ->    page showing the user card and associated articles
 │   │   └── UserCard.jsx          ->    induvidual card showing the details of the user- name and avatar
 │   │
-│   ├── api.js
-│   ├── App.js
-│   ├── App.test.js
-│   ├── index.css
-│   └── index.js
+│   ├── api.js                    ->    contains the api request functions
+│   ├── App.js                    ->    contains the header, main and footer components
+│   ├── index.css                 ->    styling file for the components of the website
+│   └── index.js                  ->    renders the app in the index.html
 │
-├── .gitignore -> contains the local files to be ignored e.g. node_modules and knexfile.js
-├── AvaliableScripts.md -> markdown document containing information on the reactscripts for this project
-├── package.json -> contains the metadata of the npm dependencies and scripts of the project
-├── package-lock.json & yarn.lock -> auto-generated files which store an exact version dependency tree
-└── README.md -> markdown document containing all the project information
+├── .gitignore                    ->    contains the local files to be ignored e.g. node_modules and knexfile.js
+├── AvaliableScripts.md           ->    markdown document containing information on the reactscripts for this project
+├── package.json                  ->    contains the metadata of the npm dependencies and scripts of the project
+├── package-lock.json & yarn.lock ->    auto-generated files which store an exact version dependency tree
+└── README.md                     ->    markdown document containing all the project information
 ```
 
 ## App component stucture
