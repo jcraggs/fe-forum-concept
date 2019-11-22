@@ -74,6 +74,7 @@ The website is hosted here: https://forum-concept.netlify.com
 │
 ├── .gitignore                    ->    contains the local files to be ignored e.g. node_modules and knexfile.js
 ├── AvaliableScripts.md           ->    markdown document containing information on the reactscripts for this project
+├── howToDeploy.md                ->    markdown document containing information on how to host the project on netlify
 ├── package.json                  ->    contains the metadata of the npm dependencies and scripts of the project
 ├── package-lock.json & yarn.lock ->    auto-generated files which store an exact version dependency tree
 └── README.md                     ->    markdown document containing all the project information
