@@ -21,11 +21,13 @@ The minimum version of node required to run this project is v12.9.1
 
 To run, simply type the comment `npm start`.
 
-## Project Info
+## How does it work?
 
-The hosted version is found here: https://forum-concept.netlify.com
-The back-end repository is found here: https://github.com/jcraggs/forum-concept
-The hosted-version of the back-end API is found here: https://forum-concept.herokuapp.com/api
+A database which uses PostgreSQL has already been set up (see: https://github.com/jcraggs/forum-concept). This database contains all the articles, users and comments which are avaliable on the website. The database is accesible via an API and is hosted on Heroku (see: https://forum-concept.herokuapp.com/api).
+
+The front end website has been made with React which accesses the database via its exposed API. React is able to make requests to the backend via Axios, a JavaScript library which essentially promisifies HTTP requests.
+
+The website is hosted here: https://forum-concept.netlify.com
 
 ## File Structure
 
