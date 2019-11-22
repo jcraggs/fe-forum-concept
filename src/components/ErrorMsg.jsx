@@ -5,8 +5,21 @@ class ErrorMsg extends React.Component {
   render() {
     return (
       <div className="errorMsgContainer">
-        <p className="errorMsg">{this.props.error.msg}</p>
-        <p className="errorMsg">Status: {this.props.error.status}</p>
+        {this.props.error.status === 500 && (
+          <div>
+            {" "}
+            <p className="errorMsg">
+              Server {this.props.error.msg.name}: ({this.props.error.msg.code})
+            </p>
+            <p className="errorMsg">Status: {this.props.error.status}</p>
+          </div>
+        )}
+        {this.props.error.status !== 500 && (
+          <div>
+            <p className="errorMsg">{this.props.error.msg}</p>
+            <p className="errorMsg">Status: {this.props.error.status}</p>
+          </div>
+        )}
       </div>
     );
   }

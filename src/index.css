@@ -115,6 +115,9 @@ body {
   text-decoration: none;
   font-size: 0.7em;
 }
+.Footerlink:hover {
+  color: white;
+}
 
 /* Page containers */
 
