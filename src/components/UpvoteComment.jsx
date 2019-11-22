@@ -1,6 +1,5 @@
 import React from "react";
 import "../index.css";
-// import * as api from "../api";
 
 class UpvoteComment extends React.Component {
   render() {

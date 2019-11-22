@@ -22,7 +22,6 @@ class Article extends React.Component {
   };
 
   triggerError = err => {
-    console.log(err);
     this.setState({ error: err });
   };
 
