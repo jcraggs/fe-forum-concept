@@ -4,6 +4,8 @@ import * as api from "../api";
 import SingleCommentCard from "../components/SingleCommentCard";
 import InputComment from "../components/InputComment";
 import ErrorMsg from "../components/ErrorMsg";
+import Loading from "../components/Loading";
+import CommentQuery from "../components/CommentQuery";
 
 class CommentCards extends React.Component {
   state = {
@@ -48,9 +50,9 @@ class CommentCards extends React.Component {
     this.setState(currentState => {
       const newState = currentState.comments.filter(comment => {
         if (comment.comment_id === comment_id) {
-          return null;
+          return false;
         }
-        return comment;
+        return true;
       });
       return { comments: newState };
     });
@@ -58,8 +60,15 @@ class CommentCards extends React.Component {
 
   render() {
     if (this.state.error !== null) return <ErrorMsg error={this.state.error} />;
+    if (this.state.isLoading) {
+      return <Loading />;
+    }
     return (
       <div>
+        <CommentQuery
+          updateSortBy={this.props.updateSortBy}
+          updateOrder={this.props.updateOrder}
+        />
         {this.props.user && (
           <InputComment
             article_id={this.props.urlInfo.article_id}
@@ -70,7 +79,7 @@ class CommentCards extends React.Component {
         <ul className="commentCards">
           {this.state.comments.map(comment => {
             return (
-              <li key={comment.comment_id}>
+              <li className="commentList" key={comment.comment_id}>
                 <SingleCommentCard
                   user={this.props.user}
                   author={comment.author}

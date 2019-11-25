@@ -64,7 +64,11 @@ body {
   grid-row: span 2;
   font-size: 1.4em;
   cursor: pointer;
+  /* color: white;
+  text-decoration: none;
+  font-weight: bold; */
 }
+
 .App-title:hover {
   color: #25c3eb;
   transition: none;
@@ -222,6 +226,10 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #434344;
+}
+
+.articleListItems {
+  width: 100%;
 }
 
 .IndivArticleCard {
@@ -610,7 +618,6 @@ body {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  justify-content: right;
 }
 
 .IndivCommentCard > .commentVotesContainer > .upvoteButton {
@@ -678,7 +685,6 @@ body {
   padding: 5px;
   margin: 0;
   font-size: 1em;
-  text-align: center;
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
@@ -698,16 +704,18 @@ body {
   color: white;
 }
 
+/* For Desktop view */
+
 @media only screen and (min-width: 750px) {
   .IndivArticleCard {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    margin-left: 5%;
-    margin-right: 5%;
-    padding-right: 20px;
-    padding-left: 20px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    padding-right: 4vw;
+    padding-left: 4vw;
     padding-bottom: 5px;
     padding-top: 5px;
+    max-width: 70vw;
+    min-width: 70vw;
   }
 
   .App-header {
@@ -721,5 +729,35 @@ body {
 
   .homePageContainer {
     font-size: 0.4em;
+  }
+
+  .topicPageContainer {
+    font-size: 0.4em;
+  }
+
+  .fullArticle {
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .ArticleAndCommentsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .inputCommentBox {
+    width: 80%;
+  }
+
+  .IndivCommentCard {
+    width: 80%;
+    margin-left: 0;
+  }
+
+  .commentList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }

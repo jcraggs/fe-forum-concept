@@ -1,10 +1,10 @@
 import React from "react";
 import "../index.css";
 import { Link } from "@reach/router";
-import UpvoteArticle from "../components/UpvoteArticle";
-import DownvoteArticle from "../components/DownvoteArticle";
 import Loading from "../components/Loading";
 import * as api from "../api";
+import UpvoteItem from "../components/UpvoteItem";
+import DownvoteItem from "../components/DownvoteItem";
 
 class FullArticleCard extends React.Component {
   state = {
@@ -90,7 +90,10 @@ class FullArticleCard extends React.Component {
             this.updateArticleVote(1);
           }}
         >
-          <UpvoteArticle />
+          <UpvoteItem
+            changeval={this.state.changeval}
+            upLimit={this.state.upLimit}
+          />
         </button>
 
         <p className="aVotes">
@@ -103,7 +106,10 @@ class FullArticleCard extends React.Component {
             this.updateArticleVote(-1);
           }}
         >
-          <DownvoteArticle />
+          <DownvoteItem
+            changeval={this.state.changeval}
+            downLimit={this.state.downLimit}
+          />
         </button>
 
         <p className="aContent">{this.state.content}</p>

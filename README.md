@@ -7,19 +7,16 @@ If users are logged in they are also able write their own comments on articles. 
 
 ## To run this project locally:
 
-1. Fork this repo
-2. Click your repo's "Clone or Download" link and copy the URL (which will look something like https://github.com/xxxxx/forum-concept.git)
-3. Navigate to where you'd like the application to be copied in your command line and write:
+1. Click on the repo's "Clone or Download" button link and copy the URL (https://github.com/jcraggs/fe-forum-concept.git)
+2. Navigate to where you'd like the application to be copied in your command line and write:
 
    ```
-   git clone //your URL//
+   git clone https://github.com/jcraggs/fe-forum-concept.git
    ```
 
-Open the newly-created folder in your CLI and type `npm install` to install all dependencies.
+3. Navigate to the newly-created folder in your command line interface and type `npm install` to install all dependencies.
 
-The minimum version of node required to run this project is v12.9.1
-
-To run, simply type the comment `npm start`.
+4. To run, simply type the comment `npm start`. The minimum version of node required to run this project is v12.9.1
 
 ## How does it work?
 
@@ -45,10 +42,8 @@ The website is hosted here: https://forum-concept.netlify.com
 │   │   ├── ArticleQuery.jsx      ->    drop down select boxes to filter/sort articles
 │   │   ├── CommentCards.jsx      ->    responsible for rending the component containing comments and input boxes
 │   │   ├── CommentQuery.jsx      ->    drop down select boxes to filter/sort comments
-│   │   ├── DownvoteArticle.jsx   ->    button for downvoting an article
-│   │   ├── DownvoteComment.jsx   ->    button for downvoting a comment
+│   │   ├── DownvoteItem.jsx      ->    button for downvoting a n article or comment
 │   │   ├── ErrorMsg.jsx          ->    renders if an error is encountered
-│   │   ├── ErrorPage.jsx         ->    page which renders if the user navigates to an invalid url
 │   │   ├── Footer.jsx            ->    contains a link to my github
 │   │   ├── FullArticleCard.jsx   ->    responsible for showing the full article contents
 │   │   ├── Header.jsx            ->    contains the homepage header link and log in/out buttons
@@ -62,8 +57,7 @@ The website is hosted here: https://forum-concept.netlify.com
 │   │   ├── SingleCommentCard.jsx ->    induvidual comment card showing the contents of the comment
 │   │   ├── TopicQuery.jsx        ->    drop down select boxes to filter/sort topics
 │   │   ├── Topics.jsx            ->    page showing all articles from a particular topic
-│   │   ├── UpvoteArticle.jsx     ->    button for upvoting an article
-│   │   ├── UpvoteComment.jsx     ->    button for downvoting an article
+│   │   ├── UpvoteItem.jsx        ->    button for upvoting an article or comment
 │   │   ├── User.jsx              ->    page showing the user card and associated articles
 │   │   └── UserCard.jsx          ->    induvidual card showing the details of the user- name and avatar
 │   │
@@ -97,26 +91,24 @@ App.js
 │   │   ├── ArticleQuery
 │   │   └── ArticleCards
 │   │       └── SingleArticleCard
-│   │           ├── UpvoteArticle
-│   │           └── DownvoteArticle
+│   │           ├── UpvoteItem
+│   │           └── DownvoteItem
 │   │
 │   ├── Article ("/articles/:article_id")
 │   │   ├── LogInSubTitle
 │   │   ├── FullArticleCard
-│   │   │   ├── UpvoteArticle
-│   │   │   └── DownvoteArticle
+│   │   │   ├── UpvoteItem
+│   │   │   └── DownvoteItem
 │   │   ├── CommentQuery
 │   │   └── CommentCards
 │   │       ├── InputComment
 │   │       └── SingleCommentCard
-│   │           ├── UpvoteComment
-│   │           └── DownvoteComment
+│   │           ├── UpvoteItem
+│   │           └── DownvoteItem
 │   │
-│   ├── User ("/users/:user_id")
-│   │   ├── UserCard
-│   │   └── ArticleCards
-│   │
-│   └── ErrorPage ("/*")
+│   └── User ("/users/:user_id")
+│       ├── UserCard
+│       └── ArticleCards
 │
 └── Footer
 ```

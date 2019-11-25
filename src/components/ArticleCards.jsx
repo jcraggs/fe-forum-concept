@@ -66,7 +66,7 @@ class ArticleCards extends React.Component {
         <ul className="articleCards">
           {this.state.articles.map(article => {
             return (
-              <li key={article.article_id}>
+              <li className="articleListItems" key={article.article_id}>
                 <SingleArticleCard
                   articleTitle={article.title}
                   author={article.author}

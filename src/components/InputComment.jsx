@@ -5,10 +5,19 @@ import * as api from "../api";
 class InputComment extends React.Component {
   state = { comment: "" };
 
+  submitComment() {
+    api
+      .postComment(this.props.article_id, this.props.user, this.state.comment)
+      .then(data => {
+        this.props.updateCommentCards(data);
+      });
+  }
+
   render() {
     return (
       <form className="inputCommentContainer">
         <textarea
+          label="Comment box"
           value={this.state.comment}
           placeholder="Add a comment"
           className="inputCommentBox"
@@ -19,19 +28,11 @@ class InputComment extends React.Component {
         <button
           className="commentSubmitButton"
           onClick={event => {
+            event.preventDefault();
             if (this.state.comment !== "") {
-              api
-                .postComment(
-                  this.props.article_id,
-                  this.props.user,
-                  this.state.comment
-                )
-                .then(data => {
-                  this.props.updateCommentCards(data);
-                });
+              this.submitComment();
               this.setState({ comment: "" });
             }
-            event.preventDefault();
           }}
         >
           Submit Comment

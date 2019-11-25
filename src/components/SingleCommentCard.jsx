@@ -1,9 +1,9 @@
 import React from "react";
 import "../index.css";
 import { Link } from "@reach/router";
-import UpvoteComment from "../components/UpvoteComment";
-import DownvoteComment from "../components/DownvoteComment";
 import * as api from "../api";
+import UpvoteItem from "../components/UpvoteItem";
+import DownvoteItem from "../components/DownvoteItem";
 
 class SingleCommentCard extends React.Component {
   state = {
@@ -48,7 +48,10 @@ class SingleCommentCard extends React.Component {
               this.updateCommentVote(1);
             }}
           >
-            <UpvoteComment />
+            <UpvoteItem
+              changeval={this.state.changeval}
+              upLimit={this.state.upLimit}
+            />
           </button>
           <p className="commentVotes">
             {this.props.votes + this.state.changeval}
@@ -59,7 +62,10 @@ class SingleCommentCard extends React.Component {
               this.updateCommentVote(-1);
             }}
           >
-            <DownvoteComment />
+            <DownvoteItem
+              changeval={this.state.changeval}
+              downLimit={this.state.downLimit}
+            />
           </button>
         </div>
         {this.props.user === this.props.author && (

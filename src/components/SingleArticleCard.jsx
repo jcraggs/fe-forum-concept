@@ -1,9 +1,9 @@
 import React from "react";
 import "../index.css";
 import { Link } from "@reach/router";
-import UpvoteArticle from "../components/UpvoteArticle";
-import DownvoteArticle from "../components/DownvoteArticle";
 import * as api from "../api";
+import DownvoteItem from "../components/DownvoteItem";
+import UpvoteItem from "../components/UpvoteItem";
 
 class SingleArticleCard extends React.Component {
   state = {
@@ -44,7 +44,7 @@ class SingleArticleCard extends React.Component {
             this.updateArticleVote(1);
           }}
         >
-          <UpvoteArticle />
+          <UpvoteItem />
         </button>
 
         <p className="dateBox">
@@ -65,7 +65,7 @@ class SingleArticleCard extends React.Component {
             this.updateArticleVote(-1);
           }}
         >
-          <DownvoteArticle />
+          <DownvoteItem />
         </button>
 
         <p className="topicBox">

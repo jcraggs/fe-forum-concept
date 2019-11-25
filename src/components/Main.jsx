@@ -5,8 +5,8 @@ import Home from "../components/Home";
 import Article from "../components/Article";
 import User from "../components/User";
 import LogIn from "../components/LogIn";
-import ErrorPage from "../components/ErrorPage";
 import Topics from "../components/Topics";
+import ErrorMsg from "../components/ErrorMsg";
 
 class Main extends React.Component {
   render() {
@@ -18,7 +18,13 @@ class Main extends React.Component {
           <Topics path="/articles/topics/:topic" />
           <User path="/user/:user_id" />
           <LogIn path="/log-in" logIn={this.props.logIn} />
-          <ErrorPage path="/*" />
+          <ErrorMsg
+            path="/*"
+            error={{
+              msg: `Error '${window.location.href}' is not a valid route`,
+              status: 404
+            }}
+          />
         </Router>
       </main>
     );

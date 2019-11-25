@@ -3,7 +3,7 @@ import "../index.css";
 import FullArticleCard from "../components/FullArticleCard";
 import LogInSubTitle from "../components/LogInSubTitle";
 import CommentCards from "../components/CommentCards";
-import CommentQuery from "../components/CommentQuery";
+// import CommentQuery from "../components/CommentQuery";
 import ErrorMsg from "../components/ErrorMsg";
 
 class Article extends React.Component {
@@ -34,16 +34,14 @@ class Article extends React.Component {
           triggerError={this.triggerError}
         />
         {!this.props.user && <LogInSubTitle />}
-        <CommentQuery
-          updateSortBy={this.updateSortBy}
-          updateOrder={this.updateOrder}
-        />
         <CommentCards
           urlInfo={this.props}
           user={this.props.user}
           sortByParam={this.state.sortBy}
           orderParam={this.state.orderBy}
           triggerError={this.triggerError}
+          updateSortBy={this.updateSortBy}
+          updateOrder={this.updateOrder}
         />
       </div>
     );

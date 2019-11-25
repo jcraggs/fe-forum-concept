@@ -1,9 +1,10 @@
 import React from "react";
 import "../index.css";
+import { navigate } from "@reach/router";
 
 class LogIn extends React.Component {
   state = {
-    selectedUser: "undefined"
+    selectedUser: undefined
   };
   render() {
     return (
@@ -16,7 +17,7 @@ class LogIn extends React.Component {
               this.setState({ selectedUser: event.target.value });
             }}
           >
-            <option value="undefined">- Select user - </option>
+            <option value={undefined}>- Select user - </option>
             <option value="cooljmessy">cooljmessy</option>
             <option value="grumpy19">grumpy19</option>
             <option value="happyamy2016">happyamy2016</option>
@@ -26,11 +27,17 @@ class LogIn extends React.Component {
           </select>
           <button
             className="submitLogin"
-            disabled={this.state.selectedUser === "undefined"}
+            disabled={
+              this.state.selectedUser === undefined ||
+              this.state.selectedUser === "- Select user -"
+            }
             onClick={() => {
-              if (this.state.selectedUser !== "undefined") {
+              if (
+                this.state.selectedUser !== undefined &&
+                this.state.selectedUser !== "- Select user -"
+              ) {
                 this.props.logIn(this.state.selectedUser);
-                window.location.href = document.referrer;
+                navigate(document.referrer);
               }
             }}
           >
