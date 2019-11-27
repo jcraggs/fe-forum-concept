@@ -1,30 +1,18 @@
 import React from "react";
 import "../index.css";
+import { Link, Router } from "@reach/router";
+import LogInButton from "./LogInButton";
 
 class Header extends React.Component {
   render() {
     return (
       <header className="App-header">
-        <h1
-          className="App-title"
-          onClick={() => {
-            window.location.href = "/";
-          }}
-        >
-          Forum Concept
-        </h1>
-        {!window.location.href.match(/log-in/g) && !this.props.user ? (
-          <button
-            className="logInButton"
-            onClick={() => {
-              window.location.href = "/log-in";
-            }}
-          >
-            Log in
-          </button>
-        ) : (
-          ""
-        )}
+        <Link className="App-title_link" to="/">
+          <h1 className="App-title">Forum concept</h1>
+        </Link>
+        <Router className="logInLinkContainer">
+          <LogInButton default user={this.props.user} />
+        </Router>
         {this.props.user && (
           <button
             className="logInButton"
