@@ -13,28 +13,28 @@ class InputComment extends React.Component {
       });
   }
 
+  handleSubmit = event => {
+    event.preventDefault();
+    if (this.state.comment !== "") {
+      this.submitComment();
+      this.setState({ comment: "" });
+    }
+  };
+
   render() {
     return (
-      <form className="inputCommentContainer">
+      <form className="inputCommentContainer" onSubmit={this.handleSubmit}>
         <textarea
-          label="Comment box"
+          aria-label="Comment box"
           value={this.state.comment}
           placeholder="Add a comment"
           className="inputCommentBox"
           onChange={event => {
             this.setState({ comment: event.target.value });
           }}
+          required
         ></textarea>
-        <button
-          className="commentSubmitButton"
-          onClick={event => {
-            event.preventDefault();
-            if (this.state.comment !== "") {
-              this.submitComment();
-              this.setState({ comment: "" });
-            }
-          }}
-        >
+        <button className="commentSubmitButton" type="submit">
           Submit Comment
         </button>
       </form>
