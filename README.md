@@ -51,6 +51,7 @@ The website is hosted here: https://forum-concept.netlify.com
 │   │   ├── InputComment.jsx      ->    comment box which renders if a user is logged in
 │   │   ├── Loading.jsx           ->    renders whilst the request to the API is taking place
 │   │   ├── LogIn.jsx             ->    page allowing a user to be selected from a drop down list and logged in
+│   │   ├── LogInButton.jsx       ->    button for logging in and out
 │   │   ├── LogInSubTitle.jsx     ->    a reminder link within the full article page that a user needs to log in to comment
 │   │   ├── Main.jsx              ->    responsible for routing of the various pages
 │   │   ├── SingleArticleCard.jsx ->    induvidual article card showing a preview of the article
@@ -79,6 +80,7 @@ The website is hosted here: https://forum-concept.netlify.com
 ```raw
 App.js
 ├── Header
+│   └── LogInButton
 │
 ├── Main
 │   ├── LogIn ("/log-in")
