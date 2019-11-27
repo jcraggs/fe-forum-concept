@@ -3,7 +3,6 @@ import "../index.css";
 import * as api from "../api";
 import SingleCommentCard from "../components/SingleCommentCard";
 import InputComment from "../components/InputComment";
-import ErrorMsg from "../components/ErrorMsg";
 import Loading from "../components/Loading";
 import CommentQuery from "../components/CommentQuery";
 
@@ -11,7 +10,7 @@ class CommentCards extends React.Component {
   state = {
     comments: [],
     isLoading: true,
-    error: null
+    delError: null
   };
 
   fetchCommentData = () => {
@@ -25,7 +24,7 @@ class CommentCards extends React.Component {
         this.setState({ comments: data, isLoading: false });
       })
       .catch(err => {
-        console.log(err);
+        this.props.commentError(err);
       });
   };
 
@@ -46,20 +45,25 @@ class CommentCards extends React.Component {
   };
 
   deleteComment = comment_id => {
-    api.deleteCommentCard(comment_id);
-    this.setState(currentState => {
-      const newState = currentState.comments.filter(comment => {
-        if (comment.comment_id === comment_id) {
-          return false;
-        }
-        return true;
+    api
+      .deleteCommentCard(comment_id)
+      .then(() => {
+        this.setState(currentState => {
+          const newState = currentState.comments.filter(comment => {
+            if (comment.comment_id === comment_id) {
+              return false;
+            }
+            return true;
+          });
+          return { comments: newState };
+        });
+      })
+      .catch(() => {
+        this.setState({ delError: true });
       });
-      return { comments: newState };
-    });
   };
 
   render() {
-    if (this.state.error !== null) return <ErrorMsg error={this.state.error} />;
     if (this.state.isLoading) {
       return <Loading />;
     }
@@ -75,6 +79,12 @@ class CommentCards extends React.Component {
             updateCommentCards={this.updateCommentCards}
             user={this.props.user}
           />
+        )}
+        {this.state.delError && (
+          <div className="deleteError">
+            <p>Error: comment failed to delete</p>
+            <p>Status: 500 </p>
+          </div>
         )}
         <ul className="commentCards">
           {this.state.comments.map(comment => {
