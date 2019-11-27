@@ -15,18 +15,26 @@ class SingleArticleCard extends React.Component {
   updateArticleVote = changeVoteVal => {
     if (changeVoteVal === 1) {
       if (this.state.changeval !== this.state.upLimit) {
-        this.setState({
-          changeval: this.state.changeval + 1
+        this.setState(currentState => ({
+          changeval: currentState.changeval + 1
+        }));
+        api.patchArticleVote(this.props.article_id, changeVoteVal).catch(() => {
+          this.setState(currentState => ({
+            changeval: currentState.changeval - 1
+          }));
         });
-        api.patchArticleVote(this.props.article_id, changeVoteVal);
       }
     }
     if (changeVoteVal === -1) {
       if (this.state.changeval !== this.state.downLimit) {
-        this.setState({
-          changeval: this.state.changeval - 1
+        this.setState(currentState => ({
+          changeval: currentState.changeval - 1
+        }));
+        api.patchArticleVote(this.props.article_id, changeVoteVal).catch(() => {
+          this.setState(currentState => ({
+            changeval: currentState.changeval + 1
+          }));
         });
-        api.patchArticleVote(this.props.article_id, changeVoteVal);
       }
     }
   };
@@ -44,7 +52,10 @@ class SingleArticleCard extends React.Component {
             this.updateArticleVote(1);
           }}
         >
-          <UpvoteItem />
+          <UpvoteItem
+            changeval={this.state.changeval}
+            upLimit={this.state.upLimit}
+          />
         </button>
 
         <p className="dateBox">
@@ -65,7 +76,10 @@ class SingleArticleCard extends React.Component {
             this.updateArticleVote(-1);
           }}
         >
-          <DownvoteItem />
+          <DownvoteItem
+            changeval={this.state.changeval}
+            downLimit={this.state.downLimit}
+          />
         </button>
 
         <p className="topicBox">

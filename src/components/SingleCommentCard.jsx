@@ -15,18 +15,26 @@ class SingleCommentCard extends React.Component {
   updateCommentVote = changeVoteVal => {
     if (changeVoteVal === 1) {
       if (this.state.changeval !== this.state.upLimit) {
-        this.setState({
-          changeval: this.state.changeval + 1
+        this.setState(currentState => ({
+          changeval: currentState.changeval + 1
+        }));
+        api.patchCommentVote(this.props.comment_id, changeVoteVal).catch(() => {
+          this.setState(currentState => ({
+            changeval: currentState.changeval - 1
+          }));
         });
-        api.patchCommentVote(this.props.comment_id, changeVoteVal);
       }
     }
     if (changeVoteVal === -1) {
       if (this.state.changeval !== this.state.downLimit) {
-        this.setState({
-          changeval: this.state.changeval - 1
+        this.setState(currentState => ({
+          changeval: currentState.changeval - 1
+        }));
+        api.patchCommentVote(this.props.comment_id, changeVoteVal).catch(() => {
+          this.setState(currentState => ({
+            changeval: currentState.changeval + 1
+          }));
         });
-        api.patchCommentVote(this.props.comment_id, changeVoteVal);
       }
     }
   };

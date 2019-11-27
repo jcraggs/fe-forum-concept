@@ -39,18 +39,30 @@ class FullArticleCard extends React.Component {
   updateArticleVote = changeVoteVal => {
     if (changeVoteVal === 1) {
       if (this.state.changeval !== this.state.upLimit) {
-        this.setState({
-          changeval: this.state.changeval + 1
-        });
-        api.patchArticleVote(this.props.urlInfo.article_id, changeVoteVal);
+        this.setState(currentState => ({
+          changeval: currentState.changeval + 1
+        }));
+        api
+          .patchArticleVote(this.props.urlInfo.article_id, changeVoteVal)
+          .catch(() => {
+            this.setState(currentState => ({
+              changeval: currentState.changeval - 1
+            }));
+          });
       }
     }
     if (changeVoteVal === -1) {
       if (this.state.changeval !== this.state.downLimit) {
-        this.setState({
-          changeval: this.state.changeval - 1
-        });
-        api.patchArticleVote(this.props.urlInfo.article_id, changeVoteVal);
+        this.setState(currentState => ({
+          changeval: currentState.changeval - 1
+        }));
+        api
+          .patchArticleVote(this.props.urlInfo.article_id, changeVoteVal)
+          .catch(() => {
+            this.setState(currentState => ({
+              changeval: currentState.changeval + 1
+            }));
+          });
       }
     }
   };
