@@ -55,6 +55,10 @@ body {
   margin-left: auto;
 }
 
+.logInLinkContainer {
+  margin-left: auto;
+}
+
 .logInButton:hover {
   color: #25c3eb;
   transition: none;
@@ -64,14 +68,18 @@ body {
   grid-row: span 2;
   font-size: 1.4em;
   cursor: pointer;
-  /* color: white;
-  text-decoration: none;
-  font-weight: bold; */
+  color: white;
+  font-weight: bold;
 }
 
 .App-title:hover {
   color: #25c3eb;
   transition: none;
+}
+
+.App-title_link {
+  grid-row: span 2;
+  text-decoration: none;
 }
 
 .welcomeMessage {
@@ -598,6 +606,11 @@ body {
   text-align: center;
 }
 
+.deleteError {
+  margin-left: 5%;
+  font-size: 0.8em;
+}
+
 .commentContent {
   grid-row: 2 span 2;
   grid-column: span 4;
@@ -759,5 +772,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .deleteError {
+    margin-left: 10%;
   }
 }
