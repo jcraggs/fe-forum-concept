@@ -1,11 +1,12 @@
 import React from "react";
 import "../index.css";
+import { Link } from "@reach/router";
 
 function LogInSubTitle() {
   return (
-    <a className="logInSubtitle" href="/log-in">
+    <Link className="logInSubtitle" to="/log-in">
       Log in to comment on articles!
-    </a>
+    </Link>
   );
 }
 
