@@ -5,6 +5,8 @@ Forum-concept is a mock article aggregation, web content rating and discussion w
 Users can view articles and comments (which are filterable and sortable), as well as up and down vote any articles or comments they like or dislike.
 If users are logged in they are also able write their own comments on articles. Each user has their own profile page, which lists out any articles they've posted.
 
+The website is hosted here: https://forum-concept.netlify.com
+
 ## To run this project locally:
 
 1. Click on the repo's "Clone or Download" button link and copy the URL (https://github.com/jcraggs/fe-forum-concept.git)
@@ -23,8 +25,6 @@ If users are logged in they are also able write their own comments on articles. 
 A database which uses PostgreSQL has already been set up (see: https://github.com/jcraggs/forum-concept). This database contains all the articles, users and comments which are avaliable on the website. The database is accesible via an API and is hosted on Heroku (see: https://forum-concept.herokuapp.com/api).
 
 The front end website has been made with React which accesses the database via its exposed API. React is able to make requests to the backend via Axios, a JavaScript library which essentially promisifies HTTP requests.
-
-The website is hosted here: https://forum-concept.netlify.com
 
 ## File Structure
 
